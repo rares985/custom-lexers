@@ -1,0 +1,8 @@
+This is a C Structure Declaration "Interpreter". It takes its input data from
+a file you specify using input redirection("<" in Linux). The program parses
+reads each line of the structure and outputs it in an easier to read form for
+beginners.
+
+Program usage:
+	"make build" to compile
+	./lexer < input_file to run

@@ -1,0 +1,31 @@
+Context-Free Grammar Lexer
+
+	This is a lexer written in Flex and C++, which analyzes a context-free
+grammar that is provided to it via input redirection("<") from an input file.The input file
+must contain a CFG as it is formally defined, which is a tuple (V,E,R,S), with certain constraints.
+The set E must be included in V, and must contain only lowercase letters. The set R must contain only
+tuples (a,Y), where a is a symbol included in the alphabet E, and Y is a sequence of symbols from V. 
+S must be a capital letter, also included in V. A few examples to clarify what the input format must be:
+
+g01.in: ({S},{a,b},{(S,aSb),(S,e)},S) - This grammar will generate the language (e,ab,aabb,aaabbb ...)
+g02.in: ({S,A},{a,b,c},{(S,aabS),(S,e),(S,AbSc)},S)
+
+The input file must only contain the grammar, or else it will output an error. After writing the input file,
+there are 3 operations that you can perform on this grammar, however you can only perform them one at a time,
+meaning that you must run the program 3 times, were you to apply all three operations. The operations are:
+--is-void
+--useless-nonterminals
+--has-e
+which you can specify as command line arguments to the program. Several examples:
+	./lexer --has-e < g01.in
+	./lexer --useless-nonterminals < g02.in
+
+The program will answer with a Yes/No, or with a list of useless-nonterminals. In the folder test/ there are
+some scripts, which you can use to generate, clean, or fix grammars (the generated grammars will be valid and
+according to the previously described rules). Also, there are certain grammars that the script will not clean(sem**.in and
+syn**.in). These grammars contain intentional semantic and syntactic errors, so I could verify that the program actually
+checks the validity of the grammar.
+
+DISCLAIMER
+	The scripts are not written by me, so use them at your discretion.
+

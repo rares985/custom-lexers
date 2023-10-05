@@ -1,0 +1,23 @@
+struct Point {
+	int x;
+	int y;
+	Matrix* modelMatrix;
+};
+
+
+struct Matrix {
+	
+	int dimX;
+	int dimY;
+	int field[5][6];
+
+	void* buf;
+};
+
+
+struct Task {
+	Matrix* m[3][5];
+	int dimX;
+	int dimY[3];
+	float* p;
+};
